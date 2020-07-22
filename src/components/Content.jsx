@@ -1,9 +1,24 @@
 import React, { Component } from "react";
+import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
+import firebase from '../config/firebase'
 
 export default class Content extends Component {
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user) {
+        console.log('Hello', user)
+      } else {
+        window.location = '/'
+      }
+    })
+  }
+
   render() {
     return (
-      <div>
+      <div className='wrapper'>
+        <Navbar/>
+        <Sidebar/>
         {/* Content Wrapper. Contains page content */}
         <div className="content-wrapper">
           {/* Content Header (Page header) */}

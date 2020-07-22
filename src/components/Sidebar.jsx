@@ -1,6 +1,21 @@
 import React, { Component } from "react";
+import { auth } from '../config/firebase'
+import { Link } from 'react-router-dom'
 
 export default class Sidebar extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      user:''
+    }
+  }
+  componentWillMount(){
+    auth.onAuthStateChanged((user)=>{
+      if (user) {
+        this.setState({ user })
+      }
+    })
+  }
   render() {
     return (
       <div>
@@ -28,9 +43,9 @@ export default class Sidebar extends Component {
                 />
               </div>
               <div className="info">
-                <a href="#" className="d-block">
-                  Alexander Pierce
-                </a>
+                <Link className="d-block">
+                  {this.state.user.email}
+                </Link>
               </div>
             </div>
             {/* SidebarSearch Form */}
