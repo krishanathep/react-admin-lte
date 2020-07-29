@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
             <div className="user-panel mt-3 pb-3 mb-3 d-flex">
               <div className="image">
                 <img
-                  src="assets/dist/img/user2-160x160.jpg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVYUbi-Jf5QxIW-koSAO97ZmKrOXadXeJ3xQ&usqp=CAU"
                   className="img-circle elevation-2"
                   alt="User Image"
                 />
@@ -86,7 +86,16 @@ export default class Sidebar extends Component {
                   <Link to='/edocument' className="nav-link">
                     <i className="nav-icon fas fa-file-alt" />
                     <p>
-                      E-document
+                      Document
+                      <span className="right badge badge-danger">New</span>
+                    </p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to='/covid' className="nav-link">
+                    <i className="nav-icon fas fa-virus"></i>
+                    <p>
+                      Covid-19
                       <span className="right badge badge-danger">New</span>
                     </p>
                   </Link>

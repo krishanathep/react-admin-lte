@@ -17,10 +17,12 @@ export default class Navbar extends Component {
   }
 
   logOutUser = () => {
-    firebase
+    if (window.confirm("Are you sure you want to Sign Out?")){
+      firebase
       .auth()
       .signOut()
       .then((window.location = "/"));
+    }
   };
 
   render() {
