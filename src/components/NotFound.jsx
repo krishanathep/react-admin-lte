@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import Footer from './Footer';
+import { Link } from 'react-router-dom'
 
 export default class NotFound extends Component {
   render() {
@@ -20,7 +22,7 @@ export default class NotFound extends Component {
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
                     <li className="breadcrumb-item">
-                      <a href="#">Home</a>
+                      <Link to='/home'>Home</Link>
                     </li>
                     <li className="breadcrumb-item active">404 Error Page</li>
                   </ol>
@@ -31,10 +33,12 @@ export default class NotFound extends Component {
           </section>
           {/* Main content */}
           <section className="content">
+          <div className="row">
+            <div className="col-md-12">
             <div className="error-page">
               <h2 className="headline text-warning"> 404</h2>
               <div className="error-content">
-                <h3>
+                <h3 className='mt-5'>
                   <i className="fas fa-exclamation-triangle text-warning" />{" "}
                   Oops! Page not found.
                 </h3>
@@ -67,10 +71,13 @@ export default class NotFound extends Component {
               {/* /.error-content */}
             </div>
             {/* /.error-page */}
+            </div>
+          </div>
           </section>
           {/* /.content */}
         </div>
         {/* /.content-wrapper */}
+        <Footer />
       </div>
     );
   }

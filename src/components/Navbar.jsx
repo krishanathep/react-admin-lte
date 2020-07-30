@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import firebase, { auth } from "../config/firebase";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -17,11 +17,11 @@ export default class Navbar extends Component {
   }
 
   logOutUser = () => {
-    if (window.confirm("Are you sure you want to Sign Out?")){
+    if (window.confirm("Are you sure you want to Sign Out?")) {
       firebase
-      .auth()
-      .signOut()
-      .then((window.location = "/"));
+        .auth()
+        .signOut()
+        .then((window.location = "/"));
     }
   };
 
@@ -29,28 +29,28 @@ export default class Navbar extends Component {
     return (
       <div className="wrapper">
         {/* Navbar */}
-        <nav className="main-header navbar navbar-expand navbar-primary navbar-dark">
+        <nav className="main-header navbar navbar-expand navbar-primary navbar-dark fixed-top">
           {/* Left navbar links */}
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
+              <Link
                 className="nav-link"
                 data-widget="pushmenu"
-                href="#"
+                to=""
                 role="button"
               >
                 <i className="fas fa-bars" />
-              </a>
+              </Link>
             </li>
             <li className="nav-item d-none d-sm-inline-block">
-              <a href="index3.html" className="nav-link">
+              <Link to='/home' className="nav-link">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item d-none d-sm-inline-block">
-              <a href="#" className="nav-link">
+              <Link to='#' className="nav-link">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
           {/* Right navbar links */}

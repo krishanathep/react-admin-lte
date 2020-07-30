@@ -126,7 +126,7 @@ export default class Register extends Component {
                         defaultValue="agree"
                       />
                       <label htmlFor="agreeTerms">
-                        I agree to the <a href="#">terms</a>
+                        I agree to the <Link to='#'>terms</Link>
                       </label>
                     </div>
                   </div>
@@ -141,14 +141,14 @@ export default class Register extends Component {
               </form>
               <div className="social-auth-links text-center">
                 <p>- OR -</p>
-                <a href="#" className="btn btn-block btn-primary">
+                <Link to='#' className="btn btn-block btn-primary">
                   <i className="fab fa-facebook mr-2" />
                   Sign up using Facebook
-                </a>
-                <a href="#" className="btn btn-block btn-danger">
+                </Link>
+                <Link to="#" className="btn btn-block btn-danger">
                   <i className="fab fa-google-plus mr-2" />
                   Sign up using Google+
-                </a>
+                </Link>
               </div>
               <Link to='/' className="text-center">
                 I already have a membership

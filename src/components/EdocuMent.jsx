@@ -67,7 +67,7 @@ export default class Edocument extends Component {
       icon: 'success',
       title: 'Success',
       text: 'Successfully for created',
-      timer: 200
+      timer: 2000
     })
 
     this.setState({
@@ -209,7 +209,7 @@ export default class Edocument extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1></h1>
+                  <h1>Document</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -262,7 +262,6 @@ export default class Edocument extends Component {
                               <td>{doc.code}</td>
                               <td>
                                 <a
-                                  target="_blank"
                                   href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf"
                                 >
                                   {doc.document}
@@ -523,7 +522,6 @@ export default class Edocument extends Component {
                                       <th>Document :</th>
                                       <td>
                                         <a
-                                          target="_blank"
                                           href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf"
                                         >
                                           {document}

@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { auth } from "./config/firebase";
 import Covid from "./components/Covid";
+import MeetingRooms from "./components/MeetingRooms";
 
 export default class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ export default class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/home" component={Content} />
             <Route exact path="/edocument" component={Edocument} />
+            <Route exact path='/meeting-rooms' component={MeetingRooms} />
             <Route exact path="/covid" component={Covid} />
             <Route
               path="/privacy-policy"

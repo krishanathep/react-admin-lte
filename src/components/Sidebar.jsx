@@ -21,7 +21,7 @@ export default class Sidebar extends Component {
     return (
       <div>
         {/* Main Sidebar Container */}
-        <aside className="main-sidebar sidebar-dark-primary elevation-4">
+        <aside className="main-sidebar sidebar-dark-primary elevation-4" id='main-sidebar'>
           {/* Brand Logo */}
           <a href="index3.html" className="brand-link">
             <img
@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVYUbi-Jf5QxIW-koSAO97ZmKrOXadXeJ3xQ&usqp=CAU"
                   className="img-circle elevation-2"
-                  alt="User Image"
+                  alt=""
                 />
               </div>
               <div className="info">
@@ -81,6 +81,15 @@ export default class Sidebar extends Component {
                     <p>
                       Dashboard
                       <span className="right badge badge-success">Udate</span>
+                    </p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to='/meeting-rooms' className="nav-link">
+                  <i className="nav-icon far fa-calendar-alt"></i>
+                    <p>
+                      Meeting Rooms
+                      <span className="right badge badge-danger">New</span>
                     </p>
                   </Link>
                 </li>

@@ -102,13 +102,13 @@ export default class Login extends Component {
               </form>
               <div className="social-auth-links text-center mb-3">
                 <p>- OR -</p>
-                <a href="#" className="btn btn-block btn-primary">
+                <Link to='#' className="btn btn-block btn-primary">
                   <i className="fab fa-facebook mr-2" /> Sign in using Facebook
-                </a>
-                <a href="#" className="btn btn-block btn-danger">
+                </Link>
+                <Link to='#' className="btn btn-block btn-danger">
                   <i className="fab fa-google-plus mr-2" /> Sign in using
                   Google+
-                </a>
+                </Link>
               </div>
               {/* /.social-auth-links */}
               <p className="mb-0">
