@@ -5,12 +5,14 @@ import firebase, { auth } from "../config/firebase";
 import Moment from "react-moment";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 export default class Edocument extends Component {
   constructor(props) {
     super(props);
     this.state = {
       documents: [],
+      document_id: "",
       user: "",
       code: "",
       document: "",
@@ -18,6 +20,7 @@ export default class Edocument extends Component {
       date: "",
       name: "",
       section: "",
+      hideAlert: true,
     };
   }
 
@@ -29,6 +32,20 @@ export default class Edocument extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      (!this.state.code,
+      !this.state.document,
+      !this.state.category,
+      !this.state.section)
+    ) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops!',
+        text: 'Please Check your input data!'
+      })
+      return;
+    }
 
     if (this.state.document_id !== "") {
       return this.updateDocument();
@@ -46,7 +63,12 @@ export default class Edocument extends Component {
     };
 
     documentRef.push(document);
-    console.log(document);
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Successfully for created',
+      timer: 200
+    })
 
     this.setState({
       document_id: "",
@@ -100,13 +122,23 @@ export default class Edocument extends Component {
       name: "",
       section: "",
     });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Successfully for updated',
+      timer: 2000
+    })
   }
 
   handleDelete(document_id) {
-    if (window.confirm("Are you sure you want to delete this Document?")) {
-      let docRef = firebase.database().ref("documents");
-      docRef.child(document_id).remove();
-    }
+    let docRef = firebase.database().ref("documents");
+    docRef.child(document_id).remove();
+    Swal.fire({
+      icon: 'error',
+      title: 'Success',
+      text: 'Successfully for deleted',
+      timer: 2000
+    })
   }
 
   componentDidMount() {
@@ -153,6 +185,15 @@ export default class Edocument extends Component {
       }
     });
   }
+
+  resetItem = () => {
+    this.setState({
+      code: "",
+      document: "",
+      category: "",
+      section: "",
+    });
+  };
 
   render() {
     var no = 1;

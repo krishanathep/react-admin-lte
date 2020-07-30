@@ -16,6 +16,7 @@ export default class Sidebar extends Component {
       }
     })
   }
+
   render() {
     return (
       <div>
@@ -79,6 +80,7 @@ export default class Sidebar extends Component {
                     <i className="nav-icon fas fa-tachometer-alt" />
                     <p>
                       Dashboard
+                      <span className="right badge badge-success">Udate</span>
                     </p>
                   </Link>
                 </li>
