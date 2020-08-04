@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-admin-lte/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/react-admin-lte/static/js/main.87b80c4e.chunk.js",
-    "main.js.map": "/react-admin-lte/static/js/main.87b80c4e.chunk.js.map",
+    "main.js": "/react-admin-lte/static/js/main.df8329df.chunk.js",
+    "main.js.map": "/react-admin-lte/static/js/main.df8329df.chunk.js.map",
     "runtime-main.js": "/react-admin-lte/static/js/runtime-main.87933f64.js",
     "runtime-main.js.map": "/react-admin-lte/static/js/runtime-main.87933f64.js.map",
     "static/css/2.3bd488d4.chunk.css": "/react-admin-lte/static/css/2.3bd488d4.chunk.css",
     "static/js/2.04d5406f.chunk.js": "/react-admin-lte/static/js/2.04d5406f.chunk.js",
     "static/js/2.04d5406f.chunk.js.map": "/react-admin-lte/static/js/2.04d5406f.chunk.js.map",
     "index.html": "/react-admin-lte/index.html",
-    "precache-manifest.4740f86a6b0173bc3440b4b244e008b1.js": "/react-admin-lte/precache-manifest.4740f86a6b0173bc3440b4b244e008b1.js",
+    "precache-manifest.10d4a0a569cf697979b85320b414b7d4.js": "/react-admin-lte/precache-manifest.10d4a0a569cf697979b85320b414b7d4.js",
     "service-worker.js": "/react-admin-lte/service-worker.js",
     "static/css/2.3bd488d4.chunk.css.map": "/react-admin-lte/static/css/2.3bd488d4.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/react-admin-lte/static/css/main.5ecd60fb.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.3bd488d4.chunk.css",
     "static/js/2.04d5406f.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.87b80c4e.chunk.js"
+    "static/js/main.df8329df.chunk.js"
   ]
 }
