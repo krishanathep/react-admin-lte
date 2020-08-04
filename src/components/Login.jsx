@@ -92,7 +92,7 @@ export default class Login extends Component {
                     </div>
                   </div>
                   {/* /.col */}
-                  <div className="col-4">
+                  <div className="col-12 mt-2 mb-2">
                     <button type="submit" className="btn btn-primary btn-block">
                       Sign In
                     </button>
@@ -100,17 +100,6 @@ export default class Login extends Component {
                   {/* /.col */}
                 </div>
               </form>
-              <div className="social-auth-links text-center mb-3">
-                <p>- OR -</p>
-                <Link to='#' className="btn btn-block btn-primary">
-                  <i className="fab fa-facebook mr-2" /> Sign in using Facebook
-                </Link>
-                <Link to='#' className="btn btn-block btn-danger">
-                  <i className="fab fa-google-plus mr-2" /> Sign in using
-                  Google+
-                </Link>
-              </div>
-              {/* /.social-auth-links */}
               <p className="mb-0">
                 <Link to='/register' className="text-center">
                   Register a new membership

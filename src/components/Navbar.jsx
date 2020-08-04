@@ -21,7 +21,7 @@ export default class Navbar extends Component {
       firebase
         .auth()
         .signOut()
-        .then((window.location = "/"));
+        .then((window.location = "/react-admin-lte/"));
     }
   };
 
@@ -29,7 +29,7 @@ export default class Navbar extends Component {
     return (
       <div className="wrapper">
         {/* Navbar */}
-        <nav className="main-header navbar navbar-expand navbar-primary navbar-dark fixed-top">
+        <nav className="main-header navbar navbar-expand navbar-primary navbar-dark">
           {/* Left navbar links */}
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -40,16 +40,6 @@ export default class Navbar extends Component {
                 role="button"
               >
                 <i className="fas fa-bars" />
-              </Link>
-            </li>
-            <li className="nav-item d-none d-sm-inline-block">
-              <Link to='/home' className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item d-none d-sm-inline-block">
-              <Link to='#' className="nav-link">
-                Contact
               </Link>
             </li>
           </ul>

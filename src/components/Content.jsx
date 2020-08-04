@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import firebase from '../config/firebase'
 import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 export default class Content extends Component {
   componentDidMount(){
@@ -27,7 +28,7 @@ export default class Content extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Home</h1>
+                  <h1>Dashboard</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -44,169 +45,81 @@ export default class Content extends Component {
           <section className="content">
             {/* Default box */}
             <div className="row">
-              <div className="col-md-12">
-              <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
+            <div class="col-lg-3 col-6">
+                {/* small box */}
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3>5</h3>
+
+                    <p>MEETING ROOMS</p>
+                  </div>
+                  <div class="icon">
+                  <i className="far fa-calendar-alt"></i>
+                  </div>
+                  <Link
+                    to="/meeting-rooms"
+                    class="small-box-footer"
                   >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                  </Link>
                 </div>
               </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
+              <div class="col-lg-3 col-6">
+                {/* small box */}
+                <div class="small-box bg-primary">
+                  <div class="inner">
+                    <h3>200</h3>
+
+                    <p>DOCUMENTS</p>
+                  </div>
+                  <div class="icon">
+                  <i className="fas fa-file-alt" />
+                  </div>
+                  <Link
+                    to="/edocument"
+                    class="small-box-footer"
                   >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                  </Link>
                 </div>
               </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
+              <div class="col-lg-3 col-6">
+                {/* small box */}
+                <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3>3,320</h3>
+
+                    <p>COVID 19 THAI REPORT</p>
+                  </div>
+                  <div class="icon">
+                  <i className="far fa-viruses"></i>
+                  </div>
+                  <Link
+                    to="/covid"
+                    class="small-box-footer"
                   >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                  </Link>
                 </div>
               </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
+              <div class="col-lg-3 col-6">
+                {/* small box */}
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>10</h3>
+
+                    <p>CARS BOOKING</p>
+                  </div>
+                  <div class="icon">
+                  <i className="fas fa-car"></i>
+                  </div>
+                  <Link
+                    to="/meeting-rooms"
+                    class="small-box-footer"
                   >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                  </Link>
                 </div>
-              </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
-                  >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
-                </div>
-              </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
-                  >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
-                </div>
-              </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              {/* /.card-body */}
-            </div>
               </div>
             </div>
             {/* /.card */}

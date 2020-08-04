@@ -131,7 +131,7 @@ export default class Register extends Component {
                     </div>
                   </div>
                   {/* /.col */}
-                  <div className="col-4">
+                  <div className="col-12 mt-2 mb-2">
                     <button type="submit" className="btn btn-primary btn-block">
                       Register
                     </button>
@@ -139,17 +139,6 @@ export default class Register extends Component {
                   {/* /.col */}
                 </div>
               </form>
-              <div className="social-auth-links text-center">
-                <p>- OR -</p>
-                <Link to='#' className="btn btn-block btn-primary">
-                  <i className="fab fa-facebook mr-2" />
-                  Sign up using Facebook
-                </Link>
-                <Link to="#" className="btn btn-block btn-danger">
-                  <i className="fab fa-google-plus mr-2" />
-                  Sign up using Google+
-                </Link>
-              </div>
               <Link to='/' className="text-center">
                 I already have a membership
               </Link>
