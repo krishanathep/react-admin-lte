@@ -8,6 +8,7 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import { auth } from "./config/firebase";
 import Covid from "./components/Covid";
 import MeetingRooms from "./components/MeetingRooms";
+import MovieSearch from "./components/MovieSearch";
 
 export default class App extends Component {
   componentDidMount() {
@@ -29,6 +30,7 @@ export default class App extends Component {
             <Route exact path="/edocument" component={Edocument} />
             <Route exact path='/meeting-rooms' component={MeetingRooms} />
             <Route exact path="/covid" component={Covid} />
+            <Route exact path='/movies' component={MovieSearch} />
             <Route
               path="/privacy-policy"
               component={() => {

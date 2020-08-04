@@ -106,7 +106,16 @@ export default class Sidebar extends Component {
                   <Link to='/covid' className="nav-link">
                     <i className="nav-icon fas fa-virus"></i>
                     <p>
-                      Covid-19
+                      Covid Report
+                      <span className="right badge badge-danger">New</span>
+                    </p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to='/movies' className="nav-link">
+                    <i className="nav-icon fas fa-film"></i>
+                    <p>
+                      Movies Search
                       <span className="right badge badge-danger">New</span>
                     </p>
                   </Link>

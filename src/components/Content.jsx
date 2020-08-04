@@ -106,15 +106,15 @@ export default class Content extends Component {
                 {/* small box */}
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>10</h3>
+                    <h3>2,500</h3>
 
-                    <p>CARS BOOKING</p>
+                    <p>MOVIES SEARCH</p>
                   </div>
                   <div class="icon">
-                  <i className="fas fa-car"></i>
+                  <i className="fas fa-film"></i>
                   </div>
                   <Link
-                    to="/meeting-rooms"
+                    to=""
                     class="small-box-footer"
                   >
                     More info <i class="fas fa-arrow-circle-right"></i>

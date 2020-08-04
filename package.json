@@ -1,9 +1,9 @@
 {
-  "homepage": "https://krishanathep.github.io/react-admin-lte",
   "name": "react-admin-lte",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ashvin27/react-datatable": "^1.5.1",
     "@fullcalendar/core": "^5.1.0",
     "@fullcalendar/daygrid": "^5.1.0",
     "@fullcalendar/interaction": "^5.1.0",
@@ -21,6 +21,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5",
+    "styled-components": "^5.1.1",
     "sweetalert2": "^9.17.1"
   },
   "scripts": {
