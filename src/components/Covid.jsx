@@ -3,8 +3,8 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Footer from '../components/Footer'
-import firebase, {auth} from '../config/firebase'
+import Footer from "../components/Footer";
+import firebase, { auth } from "../config/firebase";
 import {
   ResponsiveContainer,
   XAxis,
@@ -111,11 +111,13 @@ export default class Covid extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Covid-19</h1>
+                  <h1>COVID 19 THAILAND</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
-                    <li className="breadcrumb-item"><Link to='/home'>Home</Link> / Covid-19</li>
+                    <li className="breadcrumb-item">
+                      <Link to="/home">Home</Link> / Covid 19
+                    </li>
                   </ol>
                 </div>
               </div>
@@ -125,93 +127,68 @@ export default class Covid extends Component {
           {/* Main content */}
           <section className="content">
             <div className="row">
-              <div class="col-lg-3 col-6">
-                {/* small box */}
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>{data_text.confirmed.toLocaleString()}</h3>
-
-                    <p>CONFIRMED ({data_text.newConfirmed.toLocaleString()})</p>
+              <div className="col-md-3 col-sm-6 col-12">
+                <div className="info-box">
+                  <span className="info-box-icon bg-info">
+                    <i className="fas fa-viruses"></i>
+                  </span>
+                  <div className="info-box-content">
+                    <span className="info-box-text">CONFIRMED ({data_text.newConfirmed.toLocaleString()})</span>
+                    <span className="info-box-number">{data_text.confirmed.toLocaleString()}</span>
                   </div>
-                  <div class="icon">
-                    <i className="fas fa-virus"></i>
-                  </div>
-                  <Link
-                    to="/privacy-policy"
-                    target="_blank"
-                    class="small-box-footer"
-                  >
-                    More info <i class="fas fa-arrow-circle-right"></i>
-                  </Link>
+                  {/* /.info-box-content */}
                 </div>
+                {/* /.info-box */}
               </div>
-              <div class="col-lg-3 col-6">
-                {/* small box */}
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <h3>{data_text.hospitalized.toLocaleString()}</h3>
-
-                    <p>
-                      HOSPITALIZED ({data_text.newHospitalized.toLocaleString()}
-                      )
-                    </p>
+              {/* /.col */}
+              <div className="col-md-3 col-sm-6 col-12">
+                <div className="info-box">
+                  <span className="info-box-icon bg-primary">
+                  <i className="fas fa-clinic-medical"></i>
+                  </span>
+                  <div className="info-box-content">
+                    <span className="info-box-text">HOSPITALIZED ({data_text.newHospitalized.toLocaleString()})</span>
+                    <span className="info-box-number">{data_text.hospitalized.toLocaleString()}</span>
                   </div>
-                  <div class="icon">
-                    <i className="fas fa-hospital"></i>
-                  </div>
-                  <Link
-                    to="/privacy-policy"
-                    target="_blank"
-                    class="small-box-footer"
-                  >
-                    More info <i class="fas fa-arrow-circle-right"></i>
-                  </Link>
+                  {/* /.info-box-content */}
                 </div>
+                {/* /.info-box */}
               </div>
-              <div class="col-lg-3 col-6">
-                {/* small box */}
-                <div class="small-box bg-primary">
-                  <div class="inner">
-                    <h3>{data_text.recovered.toLocaleString()}</h3>
-
-                    <p>RECOVERED ({data_text.newRecovered.toLocaleString()})</p>
+              {/* /.col */}
+              <div className="col-md-3 col-sm-6 col-12">
+                <div className="info-box">
+                  <span className="info-box-icon bg-success">
+                  <i className="fas fa-user-md"></i>
+                  </span>
+                  <div className="info-box-content">
+                    <span className="info-box-text">RECOVERED ({data_text.newRecovered.toLocaleString()})</span>
+                    <span className="info-box-number">{data_text.recovered.toLocaleString()}</span>
                   </div>
-                  <div class="icon">
-                    <i className="fas fa-user-md"></i>
-                  </div>
-                  <Link
-                    to="/privacy-policy"
-                    target="_blank"
-                    class="small-box-footer"
-                  >
-                    More info <i class="fas fa-arrow-circle-right"></i>
-                  </Link>
+                  {/* /.info-box-content */}
                 </div>
+                {/* /.info-box */}
               </div>
-              <div class="col-lg-3 col-6">
-                {/* small box */}
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>{data_text.deaths.toLocaleString()}</h3>
-
-                    <p>DEATHS ({data_text.newDeaths.toLocaleString()})</p>
+              {/* /.col */}
+              <div className="col-md-3 col-sm-6 col-12">
+                <div className="info-box">
+                  <span className="info-box-icon bg-danger">
+                  <i className="fas fa-skull"></i>
+                  </span>
+                  <div className="info-box-content">
+                    <span className="info-box-text">DEATHS ({data_text.newDeaths.toLocaleString()})</span>
+                    <span className="info-box-number">{data_text.deaths.toLocaleString()}</span>
                   </div>
-                  <div class="icon">
-                    <i className="fas fa-skull-crossbones"></i>
-                  </div>
-                  <Link
-                    to="/privacy-policy"
-                    target="_blank"
-                    class="small-box-footer"
-                  >
-                    More info <i class="fas fa-arrow-circle-right"></i>
-                  </Link>
+                  {/* /.info-box-content */}
                 </div>
+                {/* /.info-box */}
               </div>
+              {/* /.col */}
               <div className="col-md-6">
                 <div className="card">
                   <div className="card-header">
-                    <h3 className="card-title"><i className="fas fa-chart-bar"></i> Bar Chart</h3>
+                    <h3 className="card-title">
+                      <i className="fas fa-chart-bar"></i> Bar Chart
+                    </h3>
                     <div className="card-tools">
                       <button
                         type="button"
@@ -232,17 +209,17 @@ export default class Covid extends Component {
                     </div>
                   </div>
                   <div className="card-body">
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart width={500} height={300} data={dataTimeline15}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="Date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="NewConfirmed" fill="#8884d8" />
-                      <Bar dataKey="NewDeaths" fill="#FF9AA2" />
-                    </BarChart>
-                  </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart width={500} height={300} data={dataTimeline15}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="Date" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="NewConfirmed" fill="#8884d8" />
+                        <Bar dataKey="NewDeaths" fill="#FF9AA2" />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
                   {/* /.card-body */}
                 </div>
@@ -250,7 +227,9 @@ export default class Covid extends Component {
               <div className="col-md-6">
                 <div className="card">
                   <div className="card-header">
-                    <h3 className="card-title"><i className="fas fa-chart-pie"></i> Pie Chart</h3>
+                    <h3 className="card-title">
+                      <i className="fas fa-chart-pie"></i> Pie Chart
+                    </h3>
                     <div className="card-tools">
                       <button
                         type="button"
@@ -271,22 +250,22 @@ export default class Covid extends Component {
                     </div>
                   </div>
                   <div className="card-body">
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart width={400} height={300}>
-                      <Legend />
-                      <Pie
-                        dataKey="value"
-                        isAnimationActive={false}
-                        data={data_pie}
-                        outerRadius={100}
-                        label
-                      >
-                        <Cell fill="#8884d8" />
-                        <Cell fill="#FF9AA2" />
-                        <Cell fill="#8FC1A9" />
-                      </Pie>
-                    </PieChart>
-                  </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <PieChart width={400} height={300}>
+                        <Legend />
+                        <Pie
+                          dataKey="value"
+                          isAnimationActive={false}
+                          data={data_pie}
+                          outerRadius={100}
+                          label
+                        >
+                          <Cell fill="#8884d8" />
+                          <Cell fill="#FF9AA2" />
+                          <Cell fill="#8FC1A9" />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
                   </div>
                   {/* /.card-body */}
                 </div>
@@ -294,7 +273,9 @@ export default class Covid extends Component {
               <div className="col-md-12">
                 <div className="card mb-3">
                   <div className="card-header">
-                    <h3 className="card-title"><i className="fas fa-chart-area"></i> Area Chart</h3>
+                    <h3 className="card-title">
+                      <i className="fas fa-chart-area"></i> Area Chart
+                    </h3>
                     <div className="card-tools">
                       <button
                         type="button"
@@ -315,7 +296,7 @@ export default class Covid extends Component {
                     </div>
                   </div>
                   <div className="card-body">
-                  <ResponsiveContainer width="100%" height={500}>
+                    <ResponsiveContainer width="100%" height={500}>
                       <LineChart
                         data={dataTimeline}
                         margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
