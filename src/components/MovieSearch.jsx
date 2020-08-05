@@ -1,63 +1,75 @@
 import React, { Component, Fragment } from "react";
-import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
-import ReactDatatable from '@ashvin27/react-datatable';
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import ReactDatatable from "@ashvin27/react-datatable";
 
 export default class MovieSearch extends Component {
-  constructor(props){
-    super(props)
-    this.state={
+  constructor(props) {
+    super(props);
+    this.state = {
       comments: [],
-    }
+    };
     this.columns = [
-      { key: 'id', text: 'ID' },
-      { key: 'name', text: 'Name' },
-      { key: 'email', text: 'Email' },
-     
+      { key: "id", text: "ID" },
+      { key: "name", text: "Name" },
+      { key: "email", text: "Email" },
+
       {
         key: "action",
         text: "Action",
         cell: (record, index) => {
-            return (
-                <Fragment>
-                    <button
-                        className="btn btn-primary btn-sm"
-                        style={{marginRight: '5px'}}>
-                            Edit
-                    </button>
-                    <button 
-                        className="btn btn-danger btn-sm" 
-                        >
-                            Delete
-                    </button>
-                </Fragment>
-            );
-        }
-    }
-    ]
+          return (
+            <Fragment>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={() => this.editRecord(record)}
+                style={{ marginRight: "5px" }}
+              >
+                Edit
+              </button>
+              <button 
+              className="btn btn-danger btn-sm"
+              onClick={() => this.deleteRecord(record)}
+              >
+                Delete</button>
+            </Fragment>
+          );
+        },
+      },
+    ];
     this.config = {
       page_size: 10,
       length_menu: [10, 20, 50],
       show_filter: true,
       show_pagination: true,
-      pagination: 'advance',
+      pagination: "advance",
       button: {
-          excel: false,
-          print: false
-      }
+        excel: false,
+        print: false,
+      },
+    };
   }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((res) => res.json())
+      .then((comments) => this.setState({ comments: comments }));
   }
-  componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/comments')
-      .then(res=>res.json())
-      .then(comments=>this.setState({comments: comments}))
+
+  editRecord(record) {
+    alert('Edit Record', this.state.comments)
+    console.log("Edit Record", record);
+  }
+
+  deleteRecord(record) {
+    alert('Delete Record')
+    console.log("Delete Record", record);
   }
 
   render() {
     return (
-        <div className="Edocument wrapper">
+      <div className="Edocument wrapper">
         <Navbar />
         <Sidebar />
         <div className="content-wrapper">
@@ -85,11 +97,11 @@ export default class MovieSearch extends Component {
                     <h3 className="card-title">Moives Search</h3>
                   </div>
                   <div className="card-body">
-                  <ReactDatatable
-                    config={this.config}
-                    records={this.state.comments}
-                    columns={this.columns}
-                  />
+                    <ReactDatatable
+                      config={this.config}
+                      records={this.state.comments}
+                      columns={this.columns}
+                    />
                   </div>
                 </div>
               </div>

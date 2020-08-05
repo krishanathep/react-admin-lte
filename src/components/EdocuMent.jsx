@@ -1,17 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import firebase, { auth } from "../config/firebase";
 import Moment from "react-moment";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import ReactDatatable from "@ashvin27/react-datatable";
 
 export default class Edocument extends Component {
   constructor(props) {
     super(props);
     this.state = {
       documents: [],
+      no: 1,
       document_id: "",
       user: "",
       code: "",
@@ -21,6 +23,99 @@ export default class Edocument extends Component {
       name: "",
       section: "",
       hideAlert: true,
+    };
+    this.columns = [
+      { key: "code", text: "Code" },
+      {
+        key: "document",
+        text: "Document",
+        cell: (document) => {
+          return (
+            <Fragment>
+              <a href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf">
+                {document.document}
+              </a>
+            </Fragment>
+          );
+        },
+      },
+      { key: "category", text: "Category" },
+      {
+        key: "date",
+        text: "Create",
+        cell: (document) => {
+          return (
+            <Fragment>
+              <Moment format="DD MMMM YY">{document.date}</Moment>
+            </Fragment>
+          );
+        },
+      },
+      { key: "name", text: "Name" },
+      { key: "section", text: "Section" },
+      {
+        key: "actions",
+        text: "Actions",
+        cell: (document) => {
+          return (
+            <Fragment>
+              <button
+                className="btn btn-info btn-sm mr-1"
+                data-toggle="modal"
+                data-target="#viewModal"
+                onClick={() =>
+                  this.handleUpdate(
+                    document.document_id,
+                    document.code,
+                    document.document,
+                    document.category,
+                    document.date,
+                    document.name,
+                    document.section
+                  )
+                }
+              >
+                <i className="fa fa-eye"></i>
+              </button>
+              <button
+                className="btn btn-primary btn-sm mr-1"
+                data-toggle="modal"
+                data-target="#updateModal"
+                onClick={() =>
+                  this.handleUpdate(
+                    document.document_id,
+                    document.code,
+                    document.document,
+                    document.category,
+                    document.date,
+                    document.name,
+                    document.section
+                  )
+                }
+              >
+                <i className="fa fa-pen"></i>
+              </button>
+              <button
+                className="btn btn-danger btn-sm mr-1"
+                onClick={() => this.handleDelete(document.document_id)}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
+            </Fragment>
+          );
+        },
+      },
+    ];
+    this.config = {
+      page_size: 10,
+      length_menu: [10, 20, 50],
+      show_filter: true,
+      show_pagination: true,
+      pagination: "advance",
+      button: {
+        excel: false,
+        print: false,
+      },
     };
   }
 
@@ -40,10 +135,10 @@ export default class Edocument extends Component {
       !this.state.section)
     ) {
       Swal.fire({
-        icon: 'info',
-        title: 'Oops!',
-        text: 'Please Check your input data!'
-      })
+        icon: "info",
+        title: "Oops!",
+        text: "Please Check your input data!",
+      });
       return;
     }
 
@@ -64,11 +159,11 @@ export default class Edocument extends Component {
 
     documentRef.push(document);
     Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Successfully for created',
-      timer: 2000
-    })
+      icon: "success",
+      title: "Success",
+      text: "Successfully for created",
+      timer: 2000,
+    });
 
     this.setState({
       document_id: "",
@@ -123,22 +218,22 @@ export default class Edocument extends Component {
       section: "",
     });
     Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Successfully for updated',
-      timer: 2000
-    })
+      icon: "success",
+      title: "Success",
+      text: "Successfully for updated",
+      timer: 2000,
+    });
   }
 
   handleDelete(document_id) {
     let docRef = firebase.database().ref("documents");
     docRef.child(document_id).remove();
     Swal.fire({
-      icon: 'error',
-      title: 'Success',
-      text: 'Successfully for deleted',
-      timer: 2000
-    })
+      icon: "error",
+      title: "Success",
+      text: "Successfully for deleted",
+      timer: 2000,
+    });
   }
 
   componentDidMount() {
@@ -196,7 +291,6 @@ export default class Edocument extends Component {
   };
 
   render() {
-    var no = 1;
     const { code, document, category, section, date, name } = this.state;
     return (
       <div className="Edocument wrapper">
@@ -209,7 +303,7 @@ export default class Edocument extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Document</h1>
+                  <h1>DOCUMENTS</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -227,9 +321,9 @@ export default class Edocument extends Component {
             {/* Default box */}
             <div className="row">
               <div className="col-md-12">
-                <div className="card">
-                  <div className="card-header">
-                    <h3 className="card-title">Document</h3>
+                <div className="card mb-5">
+                <div className="card-header">
+                    <h3 className="card-title"></h3>
                     <div className="card-tools">
                       <button
                         className="btn btn-success btn-sm"
@@ -241,88 +335,12 @@ export default class Edocument extends Component {
                     </div>
                   </div>
                   <div className="card-body">
-                    <div className="table-responsive">
-                      <table class="table table-hover table-bordered">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Code</th>
-                            <th>Document</th>
-                            <th>Category</th>
-                            <th>Create At</th>
-                            <th>Name</th>
-                            <th>Section</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.state.documents.map((doc) => (
-                            <tr>
-                              <td>{no++}</td>
-                              <td>{doc.code}</td>
-                              <td>
-                                <a
-                                  href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf"
-                                >
-                                  {doc.document}
-                                </a>
-                              </td>
-                              <td>{doc.category}</td>
-                              <td>
-                                <Moment format="DD/MM/YYYY">{doc.date}</Moment>
-                              </td>
-                              <td>{doc.name}</td>
-                              <td>{doc.section}</td>
-                              <td>
-                                <button
-                                  className="btn btn-info btn-sm mr-1"
-                                  data-toggle="modal"
-                                  data-target="#viewModal"
-                                  onClick={() =>
-                                    this.handleUpdate(
-                                      doc.document_id,
-                                      doc.code,
-                                      doc.document,
-                                      doc.category,
-                                      doc.date,
-                                      doc.name,
-                                      doc.section
-                                    )
-                                  }
-                                >
-                                  <i className="fa fa-eye"></i>
-                                </button>
-                                <button
-                                  className="btn btn-primary btn-sm mr-1"
-                                  data-toggle="modal"
-                                  data-target="#updateModal"
-                                  onClick={() =>
-                                    this.handleUpdate(
-                                      doc.document_id,
-                                      doc.code,
-                                      doc.document,
-                                      doc.category,
-                                      doc.date,
-                                      doc.name,
-                                      doc.section
-                                    )
-                                  }
-                                >
-                                  <i className="fa fa-pen"></i>
-                                </button>
-                                <button
-                                  className="btn btn-danger btn-sm mr-1"
-                                  onClick={() =>
-                                    this.handleDelete(doc.document_id)
-                                  }
-                                >
-                                  <i className="fa fa-trash"></i>
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                    <div>
+                      <ReactDatatable
+                        config={this.config}
+                        records={this.state.documents}
+                        columns={this.columns}
+                      />
                     </div>
                     <div class="modal fade" id="createModal">
                       <div class="modal-dialog">
@@ -521,9 +539,7 @@ export default class Edocument extends Component {
                                     <tr>
                                       <th>Document :</th>
                                       <td>
-                                        <a
-                                          href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf"
-                                        >
+                                        <a href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf">
                                           {document}
                                         </a>
                                       </td>
@@ -535,7 +551,7 @@ export default class Edocument extends Component {
                                     <tr>
                                       <th>Create At :</th>
                                       <td>
-                                        <Moment format="DD/MM/YYYY">
+                                        <Moment format="DD MMMM YY">
                                           {date}
                                         </Moment>
                                       </td>
