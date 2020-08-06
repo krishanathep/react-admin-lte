@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import ReactDatatable from "@ashvin27/react-datatable";
+import FileUploader from 'react-firebase-file-uploader'
 
 export default class Edocument extends Component {
   constructor(props) {
@@ -23,6 +24,10 @@ export default class Edocument extends Component {
       name: "",
       section: "",
       hideAlert: true,
+      fileUrl: "",
+      fileName: '',
+      avatar: '',
+      isUploading: false,
     };
     this.columns = [
       { key: "code", text: "Code" },
@@ -32,7 +37,7 @@ export default class Edocument extends Component {
         cell: (document) => {
           return (
             <Fragment>
-              <a href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf">
+              <a href={document.fileUrl} target="_blank">
                 {document.document}
               </a>
             </Fragment>
@@ -71,7 +76,8 @@ export default class Edocument extends Component {
                     document.category,
                     document.date,
                     document.name,
-                    document.section
+                    document.section,
+                    document.fileUrl,
                   )
                 }
               >
@@ -119,6 +125,26 @@ export default class Edocument extends Component {
     };
   }
 
+  handleChangeUsername = event =>
+    this.setState({ fileName: event.target.value })
+
+  handleUploadStart = () => this.setState({ isUploading: true });
+
+  handleUploadError = error => {
+    this.setState({ isUploading: false });
+    console.error(error);
+  };
+
+  handleUploadSuccess = filename => {
+    this.setState({ avatar: filename, progress: 100, isUploading: false })
+    firebase
+      .storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ fileUrl: url }))
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -155,6 +181,7 @@ export default class Edocument extends Component {
       date: firebase.database.ServerValue.TIMESTAMP,
       name: this.state.user.email,
       section: this.state.section,
+      fileUrl: this.state.fileUrl,
     };
 
     documentRef.push(document);
@@ -173,6 +200,7 @@ export default class Edocument extends Component {
       date: "",
       name: "",
       section: "",
+      fileUrl: '',
     });
   };
 
@@ -183,7 +211,8 @@ export default class Edocument extends Component {
     category = null,
     date = null,
     name = null,
-    section = null
+    section = null,
+    fileUrl = null,
   ) => {
     this.setState({
       document_id,
@@ -193,6 +222,7 @@ export default class Edocument extends Component {
       date,
       name,
       section,
+      fileUrl,
     });
   };
 
@@ -257,6 +287,7 @@ export default class Edocument extends Component {
           date: documents[document].date,
           name: documents[document].name,
           section: documents[document].section,
+          fileUrl: documents[document].fileUrl,
         });
       }
       this.setState({
@@ -287,11 +318,12 @@ export default class Edocument extends Component {
       document: "",
       category: "",
       section: "",
+      fileUrl: '',
     });
   };
 
   render() {
-    const { code, document, category, section, date, name } = this.state;
+    const { code, document, category, section, date, name, fileUrl } = this.state;
     return (
       <div className="Edocument wrapper">
         <Navbar />
@@ -401,6 +433,23 @@ export default class Edocument extends Component {
                                       value={section}
                                       onChange={this.handleChange}
                                       placeholder="Enter Section"
+                                    />
+                                  </div>
+                                  <div className="form-group">
+                                    <label htmlFor="">File :</label>
+                                    <input 
+                                      type="text"
+                                      className='form-control'
+                                      name='fileUrl'
+                                      value={fileUrl}
+                                      onChange={this.handleChange}
+                                    /><br/>
+                                    <FileUploader
+                                      accept='image/*'
+                                      name='avatar'
+                                      randomizeFilename
+                                      storageRef={firebase.storage().ref("images")}
+                                      onUploadSuccess={this.handleUploadSuccess}
                                     />
                                   </div>
                                 </div>
@@ -538,10 +587,12 @@ export default class Edocument extends Component {
                                     </tr>
                                     <tr>
                                       <th>Document :</th>
+                                      <td>{document}</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Image :</th>
                                       <td>
-                                        <a href="http://www.med.msu.ac.th/web/wp-content/uploads/2015/12/KPI1.pdf">
-                                          {document}
-                                        </a>
+                                        <img src={fileUrl} height='200' width='150' alt=""/>
                                       </td>
                                     </tr>
                                     <tr>

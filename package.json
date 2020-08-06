@@ -1,5 +1,4 @@
 {
-  "homepage": "https://krishanathep.github.io/react-admin-lte/",
   "name": "react-admin-lte",
   "version": "0.1.0",
   "private": true,
@@ -18,6 +17,7 @@
     "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-firebase-file-uploader": "^2.4.3",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
