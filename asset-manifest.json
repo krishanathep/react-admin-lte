@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-admin-lte/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/react-admin-lte/static/js/main.5fbd90b8.chunk.js",
-    "main.js.map": "/react-admin-lte/static/js/main.5fbd90b8.chunk.js.map",
+    "main.css": "/react-admin-lte/static/css/main.69eda509.chunk.css",
+    "main.js": "/react-admin-lte/static/js/main.d5c5a22a.chunk.js",
+    "main.js.map": "/react-admin-lte/static/js/main.d5c5a22a.chunk.js.map",
     "runtime-main.js": "/react-admin-lte/static/js/runtime-main.87933f64.js",
     "runtime-main.js.map": "/react-admin-lte/static/js/runtime-main.87933f64.js.map",
-    "static/css/2.95e3f14f.chunk.css": "/react-admin-lte/static/css/2.95e3f14f.chunk.css",
-    "static/js/2.049278df.chunk.js": "/react-admin-lte/static/js/2.049278df.chunk.js",
-    "static/js/2.049278df.chunk.js.map": "/react-admin-lte/static/js/2.049278df.chunk.js.map",
+    "static/css/2.13503a95.chunk.css": "/react-admin-lte/static/css/2.13503a95.chunk.css",
+    "static/js/2.961a0108.chunk.js": "/react-admin-lte/static/js/2.961a0108.chunk.js",
+    "static/js/2.961a0108.chunk.js.map": "/react-admin-lte/static/js/2.961a0108.chunk.js.map",
     "index.html": "/react-admin-lte/index.html",
-    "precache-manifest.6abbf6c112094908a1d6ee5fc02b4ae1.js": "/react-admin-lte/precache-manifest.6abbf6c112094908a1d6ee5fc02b4ae1.js",
+    "precache-manifest.82e7609a7d1f0b898b8f135d9529acaf.js": "/react-admin-lte/precache-manifest.82e7609a7d1f0b898b8f135d9529acaf.js",
     "service-worker.js": "/react-admin-lte/service-worker.js",
-    "static/css/2.95e3f14f.chunk.css.map": "/react-admin-lte/static/css/2.95e3f14f.chunk.css.map",
-    "static/css/main.5ecd60fb.chunk.css.map": "/react-admin-lte/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.049278df.chunk.js.LICENSE.txt": "/react-admin-lte/static/js/2.049278df.chunk.js.LICENSE.txt"
+    "static/css/2.13503a95.chunk.css.map": "/react-admin-lte/static/css/2.13503a95.chunk.css.map",
+    "static/css/main.69eda509.chunk.css.map": "/react-admin-lte/static/css/main.69eda509.chunk.css.map",
+    "static/js/2.961a0108.chunk.js.LICENSE.txt": "/react-admin-lte/static/js/2.961a0108.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.87933f64.js",
-    "static/css/2.95e3f14f.chunk.css",
-    "static/js/2.049278df.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.5fbd90b8.chunk.js"
+    "static/css/2.13503a95.chunk.css",
+    "static/js/2.961a0108.chunk.js",
+    "static/css/main.69eda509.chunk.css",
+    "static/js/main.d5c5a22a.chunk.js"
   ]
 }
