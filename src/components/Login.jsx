@@ -1,44 +1,44 @@
 import React, { Component } from "react";
-import firebase from 'firebase'
-import { Link } from 'react-router-dom'
+import firebase from "firebase";
+import { Link } from "react-router-dom";
 
 export default class Login extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            email: '',
-            password: ''
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
 
-    handleChange=(e)=>{
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.props.history.push("/home");
+        console.log(user);
+      })
+      .catch((error) => {
+        alert(error);
         this.setState({
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    handleSubmit=(e)=>{
-        e.preventDefault();
-        const { email, password } = this.state;
-
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then((user)=>{
-                this.props.history.push('/home')
-                console.log(user)
-            })
-            .catch((error)=>{
-                alert(error)
-                this.setState({
-                    email: '',
-                    password: ''
-                })
-            })
-    }
+          email: "",
+          password: "",
+        });
+      });
+  };
 
   render() {
-      const { email, password } = this.state;
+    const { email, password } = this.state;
     return (
       <div className='class="hold-transition login-page'>
         <div className="login-box">
@@ -57,7 +57,7 @@ export default class Login extends Component {
                     type="email"
                     className="form-control"
                     placeholder="Email"
-                    name='email'
+                    name="email"
                     value={email}
                     onChange={this.handleChange}
                     required
@@ -73,7 +73,7 @@ export default class Login extends Component {
                     type="password"
                     className="form-control"
                     placeholder="Password"
-                    name='password'
+                    name="password"
                     value={password}
                     onChange={this.handleChange}
                     required
@@ -101,7 +101,7 @@ export default class Login extends Component {
                 </div>
               </form>
               <p className="mb-0">
-                <Link to='/register' className="text-center">
+                <Link to="/register" className="text-center">
                   Register a new membership
                 </Link>
               </p>

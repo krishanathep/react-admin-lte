@@ -116,7 +116,7 @@ export default class Sidebar extends Component {
                     <i className="nav-icon fas fa-film"></i>
                     <p>
                       Movies Search
-                      <span className="right badge badge-danger">New</span>
+                      <span className="right badge badge-warning">Soon</span>
                     </p>
                   </Link>
                 </li>

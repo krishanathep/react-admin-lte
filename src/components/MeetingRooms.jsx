@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import firebase from "../config/firebase";
 
 import "@fullcalendar/daygrid/main.css";
 
@@ -13,23 +14,68 @@ export default class MeetingRooms extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      calendarEvents: [{ title: "Event Now", start: new Date() }],
+      events: [],
+      title: "",
+      date: "",
+      end: "",
     };
   }
-  handleDateClick = (arg) => {
-    if (
-      window.confirm("Would you like to add an event to " + arg.dateStr + "?")
-    ) {
-      this.setState({
-        calendarEvents: this.state.calendarEvents.concat({
-          title: "New Event",
-          start: arg.date,
-          allDay: arg.allDay,
-        }),
-      });
-    }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!this.state.title) {
+      alert("Please input data!");
+    }
+
+    const eventRef = firebase.database().ref("events");
+
+    const event = {
+      title: this.state.title,
+      date: this.state.date,
+      end: this.state.end,
+    };
+
+    eventRef.push(event);
+
+    this.setState({
+      event_id: "",
+      title: "",
+      date: "",
+      end: "",
+    });
+  };
+
+  updateEvent() {}
+
+  componentDidMount() {
+    const fetchEvent = firebase.database().ref('events');
+    fetchEvent.on('value', (snapshot)=>{
+      let events = snapshot.val();
+      let newEvent = [];
+      for(let event in events){
+        newEvent.push({
+          event_id: event,
+          title: events[event].title,
+          date: events[event].date,
+          end: events[event].end
+        })
+      }
+      this.setState({
+        events: newEvent
+      })
+      console.log(this.state.events)
+    })
+  }
+
   render() {
+    const { title, date, end } = this.state;
     return (
       <div className="wrapper">
         <Navbar />
@@ -60,25 +106,28 @@ export default class MeetingRooms extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title"></h3>
+                    <div className="card-tools">
+                      <button
+                        className="btn btn-success btn-sm"
+                        data-toggle="modal"
+                        data-target="#createModal"
+                      >
+                        <i className="fa fa-plus"></i> Create
+                      </button>
+                    </div>
+                  </div>
                   <div className="card-body">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-toggle="modal"
-                      data-target="#myModal"
-                    >
-                      New Booking
-                    </button>
                     <FullCalendar
                       plugins={[dayGridPlugin, interactionPlugin]}
                       initialView="dayGridMonth"
-                      events={this.state.calendarEvents}
-                      dateClick={this.handleDateClick}
+                      events={this.state.events}
                     ></FullCalendar>
                   </div>
                   {/* /.card-body */}
                   {/* The Modal */}
-                  <div className="modal fade" id="myModal">
+                  <div className="modal fade" id="createModal">
                     <div className="modal-dialog">
                       <div className="modal-content">
                         {/* Modal Header */}
@@ -93,9 +142,48 @@ export default class MeetingRooms extends Component {
                           </button>
                         </div>
                         {/* Modal body */}
-                        <div className="modal-body">Modal body..</div>
+                        <div className="modal-body">
+                          <div className="form-group">
+                            <label htmlFor="">Event Title :</label>
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="title"
+                              value={title}
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label htmlFor="">Start Event :</label>
+                            <input
+                              type="date"
+                              className="form-control"
+                              name="date"
+                              value={date}
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          <div className="form-group">
+                            <label htmlFor="">End Event :</label>
+                            <input
+                              type="date"
+                              className="form-control"
+                              name="end"
+                              value={end}
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                        </div>
+
                         {/* Modal footer */}
                         <div className="modal-footer">
+                          <button
+                            onClick={this.handleSubmit}
+                            className="btn btn-primary"
+                            data-dismiss="modal"
+                          >
+                            Submit
+                          </button>
                           <button
                             type="button"
                             className="btn btn-danger"

@@ -7,7 +7,7 @@ export default class Footer extends Component {
         <footer class="main-footer">
           <strong>
             Copyright &copy; 2020{" "}
-            <a href="mailto:krishanathep@gmail.com">Krishanathep@gmail.com </a>.
+            <a href="mailto:krishanathep@gmail.com">Krishanathep@gmail.com </a>
           </strong>
           All rights reserved.
           

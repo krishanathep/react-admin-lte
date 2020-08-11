@@ -592,7 +592,7 @@ export default class Edocument extends Component {
                                     <tr>
                                       <th>Image :</th>
                                       <td>
-                                        <img src={fileUrl} height='200' width='150' alt=""/>
+                                        <img src={fileUrl} height='150px' width='140' alt=""/>
                                       </td>
                                     </tr>
                                     <tr>

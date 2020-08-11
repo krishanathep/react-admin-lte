@@ -92,7 +92,7 @@ export default class Content extends Component {
                     <p>COVID 19 THAI REPORT</p>
                   </div>
                   <div class="icon">
-                  <i className="far fa-viruses"></i>
+                  <i className="fas fa-virus"></i>
                   </div>
                   <Link
                     to="/covid"
